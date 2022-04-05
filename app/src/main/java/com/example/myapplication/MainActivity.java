@@ -2,6 +2,8 @@
 
 package com.example.myapplication;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,11 +13,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button mult = null;
-    private Button plus = null;
-    private TextView answer = null;
-    private EditText a = null;
-    private EditText b = null;
+    private Button mult;
+    private Button plus;
+    private TextView answer;
+    private EditText a;
+    private EditText b;
+    private Integer a1 = null;
+    private Integer b1 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +38,19 @@ public class MainActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                answer.setText("" + (Integer.parseInt(a.getText().toString()) + Integer.parseInt(b.getText().toString())));
+                if (a.getText().toString().isEmpty()){
+                    answer.setText("Please enter first number");
+                    answer.setTextColor(Color.RED);
+                }
+                else if (b.getText().toString().isEmpty()){
+                    answer.setText("Please enter second number");
+                    answer.setTextColor(Color.RED);
+                } else {
+                    a1 = Integer.parseInt(a.getText().toString());
+                    b1 = Integer.parseInt(b.getText().toString());
+                    answer.setTextColor(Color.BLACK);
+                    answer.setText(a1 + b1 + "");
+                }
             }
         });
 
@@ -43,7 +59,19 @@ public class MainActivity extends AppCompatActivity {
         mult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                answer.setText("" + (Integer.parseInt(a.getText().toString()) * Integer.parseInt(b.getText().toString())));
+                if (a.getText().toString().isEmpty()){
+                    answer.setText("Please enter first number");
+                    answer.setTextColor(Color.RED);
+                }
+                else if (b.getText().toString().isEmpty()){
+                    answer.setText("Please enter second number");
+                    answer.setTextColor(Color.RED);
+                } else {
+                    a1 = Integer.parseInt(a.getText().toString());
+                    b1 = Integer.parseInt(b.getText().toString());
+                    answer.setTextColor(Color.BLACK);
+                    answer.setText(a1 * b1 + "");
+                }
             }
         }) ;
     }
